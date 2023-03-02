@@ -1,0 +1,17 @@
+.cursor{
+    cursor: pointer;
+    color: white;
+}
+.text-decorator-none{
+    text-decoration: none !important;
+    color: white !important;
+}
+.barra{
+    background-color: green !important;
+    width: 100vw !important;
+}
+.botoes{
+    
+
+
+}

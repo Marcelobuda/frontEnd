@@ -1,0 +1,15 @@
+.texto{
+    display: flex;
+    flex-flow: wrap ;
+    justify-content: center;
+    text-align: center;
+    margin: 30px;
+    
+
+}
+.img{
+    display: flex;
+    flex-flow: wrap ;
+    justify-content: center;
+    align-items: center;
+}

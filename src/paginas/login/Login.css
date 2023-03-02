@@ -1,0 +1,17 @@
+.txts {
+    font-weight: bold !important;
+   
+}
+
+.text-decorator-none {
+    text-decoration: none;
+    background-color: black;
+}
+.entrar{
+    font-weight: bold !important;
+    margin: 10% !important;
+
+}
+.botao1{
+    background-color: green !important;
+}
