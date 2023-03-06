@@ -1,11 +1,10 @@
 .txts {
-    font-weight: bold !important;
-   
+    font-weight: bold !important; 
 }
 
 .text-decorator-none {
     text-decoration: none;
-    background-color: black;
+    color: black;
 }
 .entrar{
     font-weight: bold !important;

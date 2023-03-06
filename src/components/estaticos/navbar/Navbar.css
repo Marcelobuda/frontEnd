@@ -2,16 +2,12 @@
     cursor: pointer;
     color: white;
 }
-.text-decorator-none{
+.text-decorator-none1{
     text-decoration: none !important;
     color: white !important;
+
 }
 .barra{
     background-color: green !important;
-    width: 100vw !important;
-}
-.botoes{
-    
-
-
+    width: 95.2vw !important;
 }

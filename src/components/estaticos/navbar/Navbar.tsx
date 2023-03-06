@@ -19,9 +19,11 @@ function Navbar() {
                     <Box width='100%' display="flex" justifyContent="space-between">
                         <Box display="flex">
                         <Box mx={1} className="cursor">
+                        <Link to="/home" className="text-decorator-none1">
                         <Typography variant="h6" color="initial">
                                     Home
                                 </Typography>
+                                </Link>
                         </Box>
                         <Box mx={1} className="cursor">
                             <Typography variant="h6" color="inherit">
@@ -39,14 +41,17 @@ function Navbar() {
                             </Typography>
                         </Box>
                         </Box>
-                        <Box mx={2} className="botoes">
+                        <Box mx={2} display="flex" gap={2} >
+                        <Link to="/login" className="text-decorator-none1">
                             <Button variant="outlined" color="inherit" >
                                     Login
                             </Button>
+                            </Link>
+                            <Link to="/cadastro" className="text-decorator-none1">
                             <Button variant="outlined" color="inherit">
                                     Cadastre-se
                             </Button>
-                            
+                            </Link>
                         </Box>
                     </Box>
                 </Toolbar>

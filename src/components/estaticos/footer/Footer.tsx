@@ -11,9 +11,9 @@ function Footer() {
     
 <>
   <hr/>
-    <Grid container>
+    <Grid className='rodape' container>
         
-        <Grid xs={2}>
+        <Grid  xs={2}>
             <h1>Equipe</h1>
         <p className='nomes' >Christian</p>
         <p className='nomes'>Leoanardo</p>
@@ -37,12 +37,6 @@ function Footer() {
     </Grid >
     
     </>
-    
-
-    
-
- 
-   
   )
 }
 
