@@ -1,0 +1,10 @@
+.img2{
+    background-repeat: no-reapet;
+    width: 30vh;
+    min-height: 30vh;
+    background-size: cover;
+    background-position: center;
+}
+.txtnegrito{
+    font-weight: bold;
+}

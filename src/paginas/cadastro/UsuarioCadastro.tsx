@@ -3,55 +3,62 @@ import { Grid, Typography, TextField, Button } from "@material-ui/core";
 import { Box } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import "./UsuarioCadastro.css";
-import Usuario from '../../models/Usuario';
-import useLocalStorage from 'react-use-localstorage';
+import Usuario from "../../models/Usuario";
 import { cadastroUsuario } from "../../service/Service";
-import UsuarioLogin from "../../models/UsuarioLogin";
+import { toast } from 'react-toastify';
 
 function UsuarioCadastro() {
-
     let navigate = useNavigate();
-    const [confirmarSenha, setConfirmarSenha] = useState<String>("")
+    const [confirmarSenha, setConfirmarSenha] = useState<String>("");
     const [user, setUser] = useState<Usuario>({
         id: 0,
         nome: "",
         usuario: "",
         cpf: "",
         senha: "",
-    })
+    });
     const [userResult, setUserResult] = useState<Usuario>({
         id: 0,
         nome: "",
         usuario: "",
         cpf: "",
         senha: "",
-    })
+    });
 
     useEffect(() => {
         if (userResult.id != 0) {
-            navigate("/login")
+            navigate("/login");
         }
-    }, [userResult])
+    }, [userResult]);
 
     function confirmarSenhaHandle(e: ChangeEvent<HTMLInputElement>) {
-        setConfirmarSenha(e.target.value)
+        setConfirmarSenha(e.target.value);
     }
 
     function updatedModel(e: ChangeEvent<HTMLInputElement>) {
-
         setUser({
             ...user,
-            [e.target.name]: e.target.value
-        })
+            [e.target.name]: e.target.value,
+        });
     }
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
-        e.preventDefault()
-        if (confirmarSenha == user.senha) {
-            cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-            alert('Usuario cadastrado com sucesso')
-        } else {
-            alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
+        e.preventDefault();
+        try {
+            if (confirmarSenha === user.senha && confirmarSenha != "") {
+                await cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult);
+                toast.success("Usuario cadastrado com sucesso",{
+                    theme: "colored"
+                });
+            } else {
+                toast.error("As senhas não conferem.",{
+                    theme: 'colored'
+                });
+            }
+        } catch {
+            toast.warn("Dados inconsistentes. Favor verificar as informações de cadastro.",{
+                theme: 'colored'
+            });
         }
     }
     return (
@@ -113,7 +120,9 @@ function UsuarioCadastro() {
                         />
                         <TextField
                             value={confirmarSenha}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                                confirmarSenhaHandle(e)
+                            }
                             id="confimSenha"
                             label="Confirmação de senha"
                             variant="outlined"
@@ -122,19 +131,31 @@ function UsuarioCadastro() {
                             type="password"
                             fullWidth
                         />
-                        <Box marginTop={2} textAlign="center">
-                                <Button className='botao1' type="submit" variant="contained" color="primary">
-                                    Cadastrar
+                        <Grid container xs={12} justifyContent="space-between">
+                            <Link to="/home" className="text-decorator-none1">
+                                <Button
+                                    className="botao2"
+                                    type="submit"
+                                    variant="contained"
+                                    color="secondary"
+                                >
+                                    Cancelar
                                 </Button>
-                        </Box>
+                            </Link>
+                            <Button
+                                className="botao1"
+                                type="submit"
+                                variant="contained"
+                                color="primary"
+                            >
+                                Cadastrar
+                            </Button>
+                        </Grid>
                     </form>
-                    <Box display='flex' justifyContent='center' marginTop={2}>
-
-                    </Box>
+                    <Box display="flex" justifyContent="center" marginTop={2}></Box>
                 </Box>
             </Grid>
-            <Grid xs={6} className='img'>
-            </Grid>
+            <Grid xs={6} className="img"></Grid>
         </Grid>
     );
 }

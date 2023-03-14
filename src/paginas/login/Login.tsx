@@ -3,15 +3,17 @@ import { Grid, Typography, TextField, Button } from "@material-ui/core";
 import { Box } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { purple } from "@mui/material/colors";
-import useLocalStorage from "react-use-localstorage";
 import UsuarioLogin from "../../models/UsuarioLogin";
 import { login } from "../../service/Service";
+import { useDispatch } from "react-redux";
+import { addToken } from '../../store/tokens/Action';
+import { toast } from 'react-toastify';
 
 function Login() {
     let navigate = useNavigate();
-    const [token, setToken] = useLocalStorage("token");
+    const [token, setToken] = useState('');
+    const dispatch = useDispatch()
+
     const [userLogin, setUserLogin] = useState<UsuarioLogin>({
         id: 0,
         nome: "",
@@ -29,6 +31,7 @@ function Login() {
     }
     useEffect(() => {
         if (token != "") {
+            dispatch(addToken(token))
             navigate("/home");
         }
     }, [token]);
@@ -37,13 +40,15 @@ function Login() {
         e.preventDefault();
         try {
             await login(`/usuarios/logar`, userLogin, setToken);
-
-            alert("Usuário logado com sucesso!");
+            toast.success('Usuário logado com sucesso!',{
+                theme:'colored'
+            })
         } catch (error) {
-            alert("Dados do usuário inconsistentes. Erro ao logar!");
+            toast.error('Dados do usuário inconsistentes. Erro ao logar!',{
+                theme:'colored'
+        });
         }
     }
-
     return (
         <Grid container direction="row" justifyContent="center" alignItems="center">
             <Grid xs={7} alignItems="center">
@@ -80,7 +85,7 @@ function Login() {
                             type="password"
                             fullWidth
                         />
-                        <Box marginTop={2} textAlign="center">
+                        <Grid container xs={12} justifyContent="space-between">
                                 <Button
                                     className="botao1"
                                     type="submit"
@@ -89,7 +94,13 @@ function Login() {
                                 >
                                     Logar
                                 </Button>
-                        </Box>
+                                <Button className="botao2"
+                                    type="submit" 
+                                    variant="contained" 
+                                    color="secondary">
+                                    Cancelar
+                                </Button>
+                        </Grid>
                     </form>
                     <Box display="flex" justifyContent="center" marginTop={2}>
                         <Box marginRight={1}>
@@ -97,21 +108,12 @@ function Login() {
                                 Ainda não é cadastrado?
                             </Typography>
                         </Box>
-                        <Typography
-                            variant="subtitle1"
-                            gutterBottom
-                            align="center"
-                            className="txts"
-                        >
-                            {" "}
                             <Link to="/cadastro" className="text-decorator-none">
-                            Cadastre-se
+                        <Typography variant="subtitle1" gutterBottom align="center" className="txts"> Cadastre-se</Typography>
                             </Link>
-                        </Typography>
                     </Box>
                 </Box>
             </Grid>
-            <Grid xs={6} className="img"></Grid>
         </Grid>
     );
 }
