@@ -57,7 +57,7 @@ function Colaboradores() {
               <Box className="cards">
                 <div className="cardC">
                   <div className="blob"></div>
-                  <img src="https://imgur.com/vczDMCq.png" alt=""className="imgC" />
+                  <img src="https://imgur.com/0LMDWBs.png" alt=""className="imgC" />
                   <h2>
                     Leonardo <br></br>
                     <span>Assis</span>
@@ -93,7 +93,7 @@ function Colaboradores() {
               <Box className="cards">
                 <div className="cardC">
                   <div className="blob"></div>
-                  <img src="https://imgur.com/RnNUdyD.png" alt=""className="imgC" />
+                  <img src="https://imgur.com/vwOsibE.png" alt=""className="imgC" />
                   <h2>
                     Miguel <br></br>
                     <span>Rodrigues</span>
@@ -165,7 +165,7 @@ function Colaboradores() {
               <Box className="cards">
                 <div className="cardC">
                   <div className="blob"></div>
-                  <img src="https://imgur.com/Cx7E7iJ.png" alt=""className="imgC" />
+                  <img src="https://imgur.com/Grj22W4.png " alt=""className="imgC" />
                   <h2>
                     Nick <br></br>
                     <span>Cavalcante</span>
@@ -201,7 +201,7 @@ function Colaboradores() {
               <Box className="cards">
                 <div className="cardC">
                   <div className="blob"></div>
-                  <img src="https://imgur.com/HevuBuK.png" alt=""className="imgC" />
+                  <img src="https://imgur.com/2o9PQdl.png" alt=""className="imgC" />
                   <h2>
                     Otavio<br></br>
                     <span>Matheu</span>

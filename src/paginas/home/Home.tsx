@@ -7,6 +7,7 @@ import { TokenState } from "../../store/tokens/TokensReducer";
 import { toast } from "react-toastify";
 import TabProdutos from "../../components/produtos/tabProdutos/TabProdutos";
 import Carousel from "../../components/produtos/listaProdutos/Carousel";
+import { Box } from '@mui/material';
 
 
 function Home() {
@@ -25,9 +26,11 @@ function Home() {
   }, [token]);
 
   return (
-    <Grid container className="home pd80">
-      <Grid xs={5} className="texto">
-        <h2>Diferencial</h2>
+    <>
+    <Grid container className="pd80 imgHome">
+
+      <Grid className="texto1" xs={6}>
+      <h2>Diferencial</h2>
         <h3>
           Esse site tem como objetivo ajudar a diminuir a fome e facilitar o
           acesso a informações sobre boas práticas na plantação, cuidados
@@ -36,20 +39,9 @@ function Home() {
           mundial, e que, com as informações e práticas corretas, é possível
           aumentar a produtividade e garantir a segurança alimentar das pessoas.
         </h3>
+
       </Grid>
-      <Grid className="img" xs={6}>
-        <img src="https://images-ext-2.discordapp.net/external/05KiTmVLB79aOd8mupVQqJCxO9ot5mQjz_ovYuEsLDQ/https/cdn.diariodigital.com.br/wp-content/uploads/2020/08/Agricultura.jpg?width=890&height=473" alt="" width='700px'/>
-      </Grid>
-      <Grid xs={5} className="texto">
-        <iframe
-          src="https://drive.google.com/file/d/1zW9gzYHIZM0VNkvC6FhSaB_vsMxQF8VS/preview"
-          width="640"
-          height="480"
-          allow="autoplay"
-        ></iframe>
-        <Grid xs={4}></Grid>
-      </Grid>
-      <Grid className="img" xs={6}>
+      <Grid  className="texto2" xs={6}>
         <h3>
         Uma das vantagens da agricultura para familias carentes é que ela não requer 
         grandes investimentos financeiros. é possivel começar com sementes e mudas 
@@ -58,8 +50,13 @@ function Home() {
         horta em casa, é possivel cultivar uma variedade de alimentos.
         </h3>
       </Grid>
-      {/* <Carousel/> */}
-    </Grid>
+      <Grid xs={12}>
+        <TabProdutos />
+      </Grid>
+      </Grid>
+
+
+    </>
   );
 }
 
